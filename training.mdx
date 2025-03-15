@@ -1,0 +1,515 @@
+---
+title: "Training Manual for Junior Developer"
+description: "Prepared by: Matvey Khoussainov
+Start Date: March 16, 2025
+Objective: Equip the junior developers with technical and collaborative skills to contribute effectively to the team, with a focus on OpenShift deployment and modern development practices. And working with air gapped enviroments"
+---
+
+## Overview
+
+This training manual is organized into four key categories, each containing focused modules:
+
+1. **Core Development**: Frontend and backend foundations.
+2. **Data & Messaging**: Databases, caching, and queues.
+3. **DevOps & Deployment**: Containerization, orchestration, and deployment.
+4. **Professional Skills**: Collaboration, testing, and communication.
+5. **Air Gapped Environment**: Learn how to work in air gapped environments
+
+Each module includes:
+
+- **Learning Goals**: What to achieve.
+- **Steps**: Tasks to complete with resources.
+- **Checkpoints**: Tasks to validate understanding.
+
+---
+
+# Category 1: Core Development
+
+Focus: Building the application’s frontend and backend.
+
+## Module 1.1: Frontend Development
+
+### Learning Goals
+
+- Master React fundamentals and component-based architecture.
+- Build dynamic, server-rendered web apps with Next.js.
+- Style applications efficiently with Tailwind CSS.
+
+### Steps
+
+1. **React Basics**
+   - Learn components, props, state, hooks (useState, useEffect), and context.
+   - Resource: [React Official Docs](https://react.dev/learn).
+   - Task: Build a to-do list app (add, delete, toggle tasks, persist in localStorage).
+2. **Next.js Fundamentals**
+   - Learn file-based routing, SSG, SSR, API routes, and data fetching.
+   - Resource: [Next.js Docs](https://nextjs.org/docs) and [Learn Next.js](https://nextjs.org/learn).
+   - Task: Convert the to-do app to Next.js with pages and an API route for mock data.
+3. **Tailwind CSS**
+   - Understand utility-first CSS, responsive design, and custom themes.
+   - Resource: [Tailwind CSS Docs](https://tailwindcss.com/docs) and [Tailwind Crash Course](https://www.youtube.com/watch?v=ft30zcMlF7E).
+   - Task: Style the Next.js app (responsive layout, dark mode, hover effects).
+
+### Checkpoint
+
+- Submit a Next.js app with styled React components.
+- Demo to a senior team member.
+
+## Module 1.2: Backend Development
+
+### Learning Goals
+
+- Build lightweight, performant APIs with Hono and ElysiaJS.
+- Understand routing, middleware, and validation.
+
+### Steps
+
+1. **Hono Basics**
+   - Learn routing, middleware, and response handling.
+   - Resource: [Hono Docs](https://hono.dev/).
+   - Task: Create a REST API with a `/users` endpoint (mock data).
+2. **ElysiaJS Basics**
+   - Explore type-safe routing, plugins, and validation.
+   - Resource: [ElysiaJS Docs](https://elysiajs.com/).
+   - Task: Build a CRUD API for a resource (e.g., tasks).
+
+### Checkpoint
+
+- Share an API with 3 endpoints, tested via Postman or cURL.
+
+## Module 1.3: Libraries & APIs
+
+### Learning Goals
+
+- Integrate external libraries (LDAP) and APIs.
+- Handle authentication and error management.
+
+### Steps
+
+1. **LDAP Basics**
+   - Learn LDAP concepts and usage (e.g., `ldapts`).
+   - Task: Write a script to fetch user data from an LDAP server (mock or team-provided).
+2. **External APIs**
+   - Learn REST concepts (GET, POST, OAuth).
+   - Resource: [MDN REST Guide](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) and [JSONPlaceholder](https://jsonplaceholder.typicode.com/).
+   - Task: Extend the Next.js app to fetch/display API data (e.g., posts).
+
+### Checkpoint
+
+- Submit an LDAP script and updated Next.js app with API integration.
+
+---
+
+# Category 2: Data & Messaging
+
+Focus: Managing data storage, caching, and asynchronous workflows.
+
+## Module 2.1: Database
+
+### Learning Goals
+
+- Write and optimize SQL for PostgreSQL.
+- Use Drizzle ORM for type-safe database operations.
+
+### Steps
+
+1. **PostgreSQL + SQL Basics**
+   - Learn tables, relationships, CRUD, joins, and indexes.
+   - Resource: [PostgreSQL Tutorial](https://www.postgresqltutorial.com/) or [SQLZoo](https://sqlzoo.net/).
+   - Task: Set up PostgreSQL (via Docker), create related tables (e.g., users/tasks), and write 5 SQL queries.
+2. **Drizzle ORM**
+   - Understand schema definition, queries, and migrations.
+   - Resource: [Drizzle ORM Docs](https://orm.drizzle.team/docs/overview).
+   - Task: Integrate Drizzle into the ElysiaJS API for data persistence.
+
+### Checkpoint
+
+- Share SQL scripts and a working CRUD API with Drizzle.
+
+## Module 2.2: Redis
+
+### Learning Goals
+
+- Use Redis for caching and session management.
+- Understand key-value storage and basic commands.
+
+### Steps
+
+1. **Redis Basics**
+   - Learn Redis concepts (keys, strings, hashes, pub/sub) and commands (SET, GET, EXPIRE).
+   - Resource: [Redis Docs](https://redis.io/docs/) and [Try Redis](https://try.redis.io/).
+   - Task: Set up Redis locally (via Docker), cache API responses from the ElysiaJS app (e.g., user data), and expire them after 60 seconds.
+
+### Checkpoint
+
+- Demonstrate caching in the API with Redis (e.g., faster response on second call).
+
+## Module 2.3: Message Queues
+
+### Learning Goals
+
+- Use RabbitMQ for asynchronous processing.
+- Understand pub/sub and work queues.
+
+### Steps
+
+1. **RabbitMQ Basics**
+   - Learn queues, exchanges, and publishers/consumers.
+   - Resource: [RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html).
+   - Task: Set up RabbitMQ (via Docker), queue tasks from Next.js (e.g., mock email) to be processed by the backend.
+
+### Checkpoint
+
+- Show a working producer-consumer setup with RabbitMQ.
+
+---
+
+# Category 3: DevOps & Deployment
+
+Focus: Containerization, orchestration, and production deployment.
+
+## Module 3.1: Docker Basics
+
+### Learning Goals
+
+- Package applications with Docker.
+- Manage multi-container setups.
+
+### Steps
+
+1. **Docker Fundamentals**
+   - Learn images, containers, Dockerfile, and Docker Compose.
+   - Resource: [Docker Get Started](https://docs.docker.com/get-started/) and [Docker for Beginners](https://docker-curriculum.com/).
+   - Task: Create Dockerfiles for Next.js and ElysiaJS apps, use Docker Compose to run them with PostgreSQL and Redis.
+
+### Checkpoint
+
+- Share Dockerfiles and `docker-compose.yml`, demo the local stack.
+
+## Module 3.2: Kubernetes Basics
+
+### Learning Goals
+
+- Understand Kubernetes for orchestration.
+- Deploy apps to a local cluster.
+
+### Steps
+
+1. **Kubernetes Fundamentals**
+   - Learn pods, deployments, services, and kubectl.
+   - Resource: [Kubernetes Docs](https://kubernetes.io/docs/tutorials/) and [Minikube Tutorial](https://minikube.sigs.k8s.io/docs/start/).
+   - Task: Install Minikube, deploy the ElysiaJS API with a deployment and service.
+
+### Checkpoint
+
+- Share Kubernetes YAML files, demo API access via Minikube.
+
+v
+
+### Learning Goals
+
+- Deploy apps to OpenShift.
+- Use OpenShift-specific features.
+
+### Steps
+
+1. **OpenShift Basics**
+   - Learn projects, builds, routes, and integration with Docker/K8s.
+   - Resource: [OpenShift Docs](https://docs.openshift.com/) and [OpenShift Getting Started](https://www.openshift.com/learn/get-started).
+   - Task: Deploy the Dockerized Next.js and ElysiaJS apps to OpenShift (team cluster or trial), connect to PostgreSQL and Redis (via OpenShift templates).
+
+### Checkpoint
+
+- Share OpenShift route URLs, demo the deployed app.
+
+## Module 3.4: Telemetry
+
+### Learning Goals
+
+- Implement observability with logging and metrics.
+- Monitor application health.
+
+### Steps
+
+1. **Telemetry Basics**
+   - Learn Prometheus, Grafana, or logging (e.g., Winston).
+   - Resource: [OpenTelemetry Docs](https://opentelemetry.io/docs/) or [Intro to Observability](https://www.honeycomb.io/observability-guide).
+   - Task: Add logging and metrics (e.g., response time) to the ElysiaJS API, test under load.
+
+### Checkpoint
+
+- Show logs and metrics from the API.
+
+---
+
+# Category 4: Professional Skills
+
+Focus: Tools and practices for team contribution.
+
+## Module 4.1: Version Control
+
+### Learning Goals
+
+- Use Git for collaboration.
+- Manage branches and pull requests.
+
+### Steps
+
+1. **Git Basics**
+   - Learn `init`, `clone`, `commit`, `push`, `branch`, `merge`.
+   - Resource: [Git Docs](https://git-scm.com/doc) or [Interactive Git Tutorial](https://learngitbranching.js.org/).
+   - Task: Create a Git repo for the to-do app, commit changes, and merge a feature branch.
+
+### Checkpoint
+
+- Share a repo link with clear history and a merged branch.
+
+## Module 4.2: Testing
+
+### Learning Goals
+
+- Write unit and integration tests.
+- Use testing frameworks effectively.
+
+### Steps
+
+1. **Testing Basics**
+   - Learn Jest and React Testing Library.
+   - Resource: [Jest Docs](https://jestjs.io/docs/getting-started) and [React Testing Library Docs](https://testing-library.com/docs/react-testing-library/intro/).
+   - Task: Write 3 tests for the React app and 3 for the ElysiaJS API.
+
+### Checkpoint
+
+- Submit test files with passing results.
+
+## Module 4.3: Soft Skills
+
+### Learning Goals
+
+- Collaborate and communicate effectively.
+- Seek and provide feedback.
+
+### Steps
+
+1. **Collaboration Basics**
+   - Learn team tools (e.g., Slack, Jira) and code reviews.
+   - Resource: Team docs or [Code Review Best Practices](https://google.github.io/eng-practices/review/reviewer/).
+   - Task: Pair with a senior dev, summarize learnings.
+
+### Checkpoint
+
+- Present a 5-minute progress update with a challenge and solution.
+
+---
+
+# Catergory 5: Working in air gapped environments:
+
+Focus: Learn the environment
+
+## Module 5.1: `npm install`
+
+### Learning goals
+ 
+ - Retrieve `npm` packages
+ - Store in aritfactory
+ - Install `npm` packages
+
+### Retrieving npm packages
+
+> "npm packages are the building blocks of modern JavaScript development, allowing developers to leverage a vast ecosystem of reusable code. However, managing dependencies can be a double-edged sword—while they accelerate development, they also introduce complexity, potential security risks, and the challenge of keeping everything up to date."
+
+First we need to have access to a public internet connected device, i.e work laptop, personal laptop, with Node.js install and npm. We can use a package that allows us to retrieve a package with all of it's dependencies*. We have these options:
+
+  - `node-tgz-downloader`
+  - `npm-package-downloader`
+  - `tgz-downloader`: Not tester
+
+Each one handles downloading packages and it's dependencies a little differently, so usually we would use the latter, then move to the second. In the end the goal is to have create a copy of the package that we can then upload to an artifactory and install it from there.
+
+### Package with binaries:
+Certain pacakges ship binaries add `peerDependencies` or `optionalDependencies` so a package download would not download them per-say. It's important to check the packages `package.json` and check if the have any peer dependencies that we would need. For example `next` package.json:
+  ```jsonc
+  // truncated.
+    "dependencies": {
+      "@next/env": "15.2.2",
+      "@swc/counter": "0.1.3",
+      "@swc/helpers": "0.5.15",
+      "busboy": "1.6.0",
+      "caniuse-lite": "^1.0.30001579",
+      "postcss": "8.4.31",
+      "styled-jsx": "5.1.6"
+    },
+    "peerDependencies": {
+      "@opentelemetry/api": "^1.1.0",
+      "@playwright/test": "^1.41.2",
+      "babel-plugin-react-compiler": "*",
+      "react": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0",
+      "react-dom": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0",
+      "sass": "^1.3.0"
+    },
+    // truncated..
+    "optionalDependencies": {
+      "sharp": "^0.33.5",
+      "@next/swc-darwin-arm64": "15.2.2",
+      "@next/swc-darwin-x64": "15.2.2",
+      "@next/swc-linux-arm64-gnu": "15.2.2",
+      "@next/swc-linux-arm64-musl": "15.2.2",
+      "@next/swc-linux-x64-gnu": "15.2.2",
+      "@next/swc-linux-x64-musl": "15.2.2",
+      "@next/swc-win32-arm64-msvc": "15.2.2",
+      "@next/swc-win32-x64-msvc": "15.2.2"
+    },
+  
+  ```
+As you can see there are optional dependencies, that depending on the platform you are installing from, would be downloaded. In this example, when devoloping on windows, the package `@next/swc-win32-x64-msvc` would need to be resolved. So it's important to pass these pacakges through the package downloader.
+
+### Publishing npm Packages to Artifactory
+
+> "A package artifact repository, or package artifactory, is a centralized storage system for managing software packages, dependencies, and artifacts. It streamlines development by providing a reliable source for distributing and retrieving libraries, modules, or binaries, such as `.tgz` files, often with versioning and access control features."
+
+In our environment we use Azure DevOps to store packages privately. We also have Nexus and Gitlab Artifactory, but we don't really need them. 
+
+This guide outlines the steps to publish an npm package to an Artifactory repository. These steps are general, but follow platform specific steps if needed.
+
+#### Prerequisites
+- Node.js and npm installed on your system.
+- An Artifactory account with access to an npm repository.
+- Authentication credentials (e.g., username/password or API key) for Artifactory.
+
+#### Steps
+
+#### Configure npm to Use Artifactory
+Set up your `.npmrc` file to point to your Artifactory npm registry. You can do this globally or per-project.
+
+#### Project-specific `.npmrc`
+In your project directory, create or edit `.npmrc` with:
+```
+registry=https://<ARTIFACTORY_URL>/artifactory/api/npm/<REPO_NAME>
+_auth=<BASE64_ENCODED_AUTH>
+always-auth=true
+```
+Replace `<ARTIFACTORY_URL>` with your Artifactory instance URL and `<REPO_NAME>` with your npm repository name. Generate `<BASE64_ENCODED_AUTH>` by encoding your credentials (`username:password` or `username:API_KEY`) in Base64.
+
+Example:
+```bash
+echo -n 'username:password' | base64
+```
+
+#### Global Configuration
+Alternatively, configure npm globally:
+```bash
+npm config set registry https://<ARTIFACTORY_URL>/artifactory/api/npm/<REPO_NAME>
+npm login
+```
+Enter your Artifactory credentials when prompted.
+
+#### Publish to Artifactory
+From the directory where all the packages are stored, run:
+```pwsh
+npm publish <package_name> # you can do this in a loop
+```
+If successful, your package will be uploaded to the specified Artifactory repository.
+
+#### Troubleshooting
+- **Authentication Errors**: Verify your `.npmrc` credentials and ensure they match your Artifactory account.
+- **Version Conflicts**: Ensure the package version doesn’t already exist in Artifactory (increment the version in `package.json` if needed).
+- **Pacakge was not uploaded**: Because we are transfering for online to offline, we need to check for `publishConfig` in the `package.json` file of the packages. These configuration tells npm to publish to a specific endpoint, which is irrelavant for us. Open the package using 7zip and double-click until you are inside the folder with `package.json`, then right click and select `Edit`. It will open a notepad instace, and remove the configuration that blocks the package from being published. Save and close and make sure that 7zip updates to `.tgz`.
+
+## Module 5.2: Working with Gitlab (EE)
+
+This guide provides an overview of how to interact with a self-hosted GitLab Enterprise Edition (EE) instance. It covers setup, basic workflows, and common tasks for developers and administrators.
+
+### Prerequisites
+- **GitLab Instance URL**: Your organization’s self-hosted GitLab URL (e.g., `https://gitlab.yourcompany.com`).
+- **Git**: Installed locally (e.g., `git --version` to verify).
+- **Access Credentials**: Username/password or Personal Access Token (PAT) for authentication.
+- **SSH Key**: Optional, for SSH-based Git operations.
+
+### Initial Setup
+
+#### 1. Configure Git Locally
+Set your name and email to match your GitLab profile:
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@yourcompany.com"
+```
+
+#### 2. Authenticate with GitLab
+- **HTTPS**: Use your username and password or a PAT:
+  ```bash
+  git clone https://gitlab.yourcompany.com/group/project.git
+  ```
+  When prompted, enter your credentials or PAT.
+- **SSH**: Add your SSH key to GitLab (Profile > SSH Keys) and clone:
+  ```bash
+  git clone git@gitlab.yourcompany.com:group/project.git
+  ```
+
+#### 3. Personal Access Token (Optional)
+Generate a PAT in GitLab (Profile > Access Tokens) for API access or HTTPS cloning without a password:
+- Scope: `read_repository`, `write_repository` (adjust as needed).
+- Use: Replace password with PAT in HTTPS commands.
+
+### Basic Workflow
+
+#### 1. Cloning a Repository
+```bash
+git clone https://gitlab.yourcompany.com/group/project.git
+cd project
+```
+
+#### 2. Creating a Branch
+```bash
+git checkout -b feature/my-new-feature
+```
+
+#### 3. Committing Changes
+```bash
+git add .
+git commit -m "Add my new feature"
+```
+
+#### 4. Pushing to GitLab
+```bash
+git push origin feature/my-new-feature
+```
+
+#### 5. Creating a Merge Request (MR)
+- Navigate to your project in the GitLab UI.
+- Go to **Merge Requests** > **New Merge Request**.
+- Select your branch (`feature/my-new-feature`) and target branch (e.g., `main`).
+- Add a description and submit.
+
+## Module 5.3: Tips
+
+Ask around for help, and be curious about what is being offered to you. Learn the in's and out's of the what you are working on.
+
+
+## Final Project
+
+### Task
+
+Build a full-stack app integrating all skills:
+
+- **Core**: Next.js + React + Tailwind, Hono/ElysiaJS API, LDAP/API integration.
+- **Data**: PostgreSQL + Drizzle, Redis caching, RabbitMQ queuing.
+- **DevOps**: Dockerized, Kubernetes manifests, deployed to OpenShift, with telemetry.
+- **Skills**: Git-managed, tested, and demoed to the team.
+
+### Deliverable
+
+- Present with a code walkthrough, live OpenShift demo, and repo link.
+
+---
+
+## General Tips
+
+- **Practice Daily**: Code regularly, even small tasks.
+- **Ask Questions**: Engage senior devs for help.
+- **Document Progress**: Log learnings and challenges.
+- **Explore Workflow**: Shadow team processes.
+- **Stay Curious**: Experiment with side projects.
+
+---
+
+This restructured manual with Redis added is now more digestible, grouping related concepts for a smoother learning curve. Let me know if you’d like further refinements\!
